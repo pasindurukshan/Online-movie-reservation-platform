@@ -26,7 +26,7 @@ const BookingScreen = ({ history }) => {
     <FormContainer>
       <CheckoutSteps step1 step2 />
       <h1>Booking</h1>
-      <Form onSubmit={submitHandler}>
+      <Form style={{ color: "white" }} onSubmit={submitHandler}>
         <Form.Group controlId="address">
           <Form.Label>Address</Form.Label>
           <Form.Control
@@ -71,7 +71,11 @@ const BookingScreen = ({ history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button
+          style={{ backgroundColor: "#00cc00", color: "white" }}
+          type="submit"
+          variant="primary"
+        >
           Continue
         </Button>
       </Form>

@@ -31,10 +31,11 @@ const HomeScreen = ({ match }) => {
       {!keyword ? (
         <TicketCarousel />
       ) : (
-        <Link to="/" className="btn btn-light">
+        <Link to="/" className="btn btn-black" style={{ color: "white" }}>
           Go Back
         </Link>
       )}
+      <br /> <br /> <br />
       <h1 style={{ color: "#00cc00" }}>Latest Tickets</h1>
       {loading ? (
         <Loader />

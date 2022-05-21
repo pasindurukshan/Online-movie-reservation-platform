@@ -91,21 +91,29 @@ const OrderScreen = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
-      <h1>Order {order._id}</h1>
+      <h1 style={{ color: "#00cc00" }}>Order {order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Booking</h2>
+              <hr style={{ backgroundColor: "#00cc00" }} />
               <p>
                 <strong>Name: </strong> {order.user.name}
               </p>
               <p>
                 <strong>Email: </strong>{" "}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                <a
+                  style={{ color: "white" }}
+                  href={`mailto:${order.user.email}`}
+                >
+                  {order.user.email}
+                </a>
               </p>
               <p>
-                <strong>Address:</strong>
+                <strong>Address: </strong>
                 {order.bookingAddress.address}, {order.bookingAddress.city}{" "}
                 {order.bookingAddress.postalCode},{" "}
                 {order.bookingAddress.country}
@@ -119,8 +127,11 @@ const OrderScreen = ({ match, history }) => {
               )}
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Payment Method</h2>
+              <hr style={{ backgroundColor: "#00cc00" }} />
               <p>
                 <strong>Method: </strong>
                 {order.paymentMethod}
@@ -132,14 +143,20 @@ const OrderScreen = ({ match, history }) => {
               )}
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Order Items</h2>
+              <hr style={{ backgroundColor: "#00cc00" }} />
               {order.orderItems.length === 0 ? (
                 <Message>Order is empty</Message>
               ) : (
                 <ListGroup variant="flush">
                   {order.orderItems.map((item, index) => (
-                    <ListGroup.Item key={index}>
+                    <ListGroup.Item
+                      style={{ backgroundColor: "black", color: "white" }}
+                      key={index}
+                    >
                       <Row>
                         <Col md={1}>
                           <Image
@@ -150,10 +167,16 @@ const OrderScreen = ({ match, history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/ticket/${item.ticket}`}>{item.name}</Link>
+                          <Link
+                            style={{ color: "white" }}
+                            to={`/ticket/${item.ticket}`}
+                          >
+                            {item.name}
+                          </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price} Rs = {item.qty * item.price}{" "}
+                          Rs
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -164,37 +187,50 @@ const OrderScreen = ({ match, history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
+          <Card style={{ borderColor: "#00cc00" }}>
             <ListGroup variant="flush">
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <h2>Order Summary</h2>
+                <hr style={{ backgroundColor: "#00cc00" }} />
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>{order.itemsPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Booking</Col>
-                  <Col>${order.bookingPrice}</Col>
+                  <Col>{order.bookingPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>{order.taxPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>{order.totalPrice} Rs/=</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (
-                <ListGroup.Item>
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
                     <Loader />
@@ -211,7 +247,9 @@ const OrderScreen = ({ match, history }) => {
                 userInfo.isAdmin &&
                 order.isPaid &&
                 !order.isDelivered && (
-                  <ListGroup.Item>
+                  <ListGroup.Item
+                    style={{ backgroundColor: "black", color: "white" }}
+                  >
                     <Button
                       type="button"
                       className="btn btn-block"

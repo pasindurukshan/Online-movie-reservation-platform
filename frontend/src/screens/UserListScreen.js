@@ -40,9 +40,16 @@ const UserListScreen = ({ history }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table
+          style={{ color: "white" }}
+          striped
+          bordered
+          hover
+          responsive
+          className="table-sm"
+        >
           <thead>
-            <tr style={{ color: "white" }}>
+            <tr>
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
@@ -52,7 +59,7 @@ const UserListScreen = ({ history }) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr style={{ color: "white" }} key={user._id}>
+              <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>
