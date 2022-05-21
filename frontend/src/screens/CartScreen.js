@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
+import "./main.css";
 
 const CartScreen = ({ match, location, history }) => {
   const ticketId = match.params.id;
@@ -34,7 +35,7 @@ const CartScreen = ({ match, location, history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    history.push("/login?redirect=booking");
   };
 
   return (
@@ -48,19 +49,28 @@ const CartScreen = ({ match, location, history }) => {
         ) : (
           <ListGroup variant="flush">
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.ticket}>
+              <ListGroup.Item
+                key={item.ticket}
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
-                    <Link to={`/ticket/${item.ticket}`}>{item.name}</Link>
+                    <Link
+                      style={{ color: "white" }}
+                      to={`/ticket/${item.ticket}`}
+                    >
+                      {item.name}
+                    </Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
                       value={item.qty}
+                      style={{ backgroundColor: "black", color: "white" }}
                       onChange={(e) =>
                         dispatch(addToCart(item.ticket, Number(e.target.value)))
                       }
@@ -76,6 +86,7 @@ const CartScreen = ({ match, location, history }) => {
                     <Button
                       type="button"
                       variant="light"
+                      style={{ backgroundColor: "black", color: "#00cc00" }}
                       onClick={() => removeFromCartHandler(item.ticket)}
                     >
                       <i className="fas fa-trash"></i>
@@ -88,9 +99,11 @@ const CartScreen = ({ match, location, history }) => {
         )}
       </Col>
       <Col md={4}>
-        <Card>
+        <Card style={{ borderColor: "#00cc00" }}>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "#00cc00" }}
+            >
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
@@ -100,14 +113,16 @@ const CartScreen = ({ match, location, history }) => {
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "#00cc00" }}
+            >
               <Button
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Proceed To Checkout
+                Proceed to Checkout
               </Button>
             </ListGroup.Item>
           </ListGroup>

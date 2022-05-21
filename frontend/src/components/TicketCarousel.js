@@ -21,7 +21,7 @@ const TicketCarousel = () => {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <Carousel pause="hover" className="bg-dark">
+    <Carousel pause="hover" className="bg-black">
       {tickets.map((ticket) => (
         <Carousel.Item key={ticket._id}>
           <Link to={`/ticket/${ticket._id}`}>

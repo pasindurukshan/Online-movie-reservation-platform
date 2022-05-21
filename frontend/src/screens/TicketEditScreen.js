@@ -93,7 +93,11 @@ const TicketEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/admin/ticketlist" className="btn btn-light my-3">
+      <Link
+        to="/admin/ticketlist"
+        className="btn btn-black my-3"
+        style={{ color: "white" }}
+      >
         Go Back
       </Link>
       <FormContainer>
@@ -105,10 +109,11 @@ const TicketEditScreen = ({ match, history }) => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <Form onSubmit={submitHandler}>
+          <Form style={{ color: "white" }} onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="name"
                 placeholder="Enter name"
                 value={name}
@@ -119,6 +124,7 @@ const TicketEditScreen = ({ match, history }) => {
             <Form.Group controlId="price">
               <Form.Label>Price</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="number"
                 placeholder="Enter price"
                 value={price}
@@ -129,6 +135,7 @@ const TicketEditScreen = ({ match, history }) => {
             <Form.Group controlId="image">
               <Form.Label>Image</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="text"
                 placeholder="Enter image url"
                 value={image}
@@ -144,9 +151,10 @@ const TicketEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId="date">
-              <Form.Label>Brand</Form.Label>
+              <Form.Label>Release Date</Form.Label>
               <Form.Control
-                type="text"
+                style={{ backgroundColor: "black", color: "white" }}
+                type="date"
                 placeholder="Enter date"
                 value={date}
                 onChange={(e) => setBrand(e.target.value)}
@@ -156,6 +164,7 @@ const TicketEditScreen = ({ match, history }) => {
             <Form.Group controlId="countInStock">
               <Form.Label>Count In Stock</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="number"
                 placeholder="Enter countInStock"
                 value={countInStock}
@@ -164,8 +173,9 @@ const TicketEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId="theater">
-              <Form.Label>Category</Form.Label>
+              <Form.Label>Theaters</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="text"
                 placeholder="Enter theater"
                 value={theater}
@@ -176,6 +186,7 @@ const TicketEditScreen = ({ match, history }) => {
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
               <Form.Control
+                style={{ backgroundColor: "black", color: "white" }}
                 type="text"
                 placeholder="Enter description"
                 value={description}
@@ -183,7 +194,11 @@ const TicketEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary">
+            <Button
+              style={{ backgroundColor: "#00cc00", color: "white" }}
+              type="submit"
+              variant="primary"
+            >
               Update
             </Button>
           </Form>

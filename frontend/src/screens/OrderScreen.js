@@ -96,7 +96,7 @@ const OrderScreen = ({ match, history }) => {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>Booking</h2>
               <p>
                 <strong>Name: </strong> {order.user.name}
               </p>
@@ -106,9 +106,9 @@ const OrderScreen = ({ match, history }) => {
               </p>
               <p>
                 <strong>Address:</strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
-                {order.shippingAddress.postalCode},{" "}
-                {order.shippingAddress.country}
+                {order.bookingAddress.address}, {order.bookingAddress.city}{" "}
+                {order.bookingAddress.postalCode},{" "}
+                {order.bookingAddress.country}
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
@@ -177,8 +177,8 @@ const OrderScreen = ({ match, history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>Booking</Col>
+                  <Col>${order.bookingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

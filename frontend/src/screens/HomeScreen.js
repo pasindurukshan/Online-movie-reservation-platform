@@ -9,6 +9,7 @@ import Paginate from "../components/Paginate";
 import TicketCarousel from "../components/TicketCarousel";
 import Meta from "../components/Meta";
 import { listTickets } from "../actions/ticketActions";
+import "./main.css";
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -34,7 +35,7 @@ const HomeScreen = ({ match }) => {
           Go Back
         </Link>
       )}
-      <h1>Latest Tickets</h1>
+      <h1 style={{ color: "#00cc00" }}>Latest Tickets</h1>
       {loading ? (
         <Loader />
       ) : error ? (
