@@ -19,6 +19,7 @@ import {
   createTicketReview,
 } from "../actions/ticketActions";
 import { TICKET_CREATE_REVIEW_RESET } from "../constants/ticketConstants";
+import "./main.css";
 
 const TicketScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -67,7 +68,7 @@ const TicketScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-black my-3" to="/" style={{ color: "white" }}>
         Go Back
       </Link>
       {loading ? (
@@ -83,34 +84,59 @@ const TicketScreen = ({ history, match }) => {
             </Col>
             <Col md={3}>
               <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h3>{ticket.name}</h3>
+                <ListGroup.Item style={{ backgroundColor: "black" }}>
+                  <h3 style={{ color: "white" }}>{ticket.name}</h3>
                 </ListGroup.Item>
-                <ListGroup.Item>
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
                   <Rating
                     value={ticket.rating}
                     text={`${ticket.numReviews} reviews`}
-                  />
+                  />{" "}
+                  <br />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${ticket.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {ticket.description}
+
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
+                  Price: {ticket.price} Rs/=
+                </ListGroup.Item>
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
+                  Release Date: {ticket.date}
+                </ListGroup.Item>
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
+                  Theaters: {ticket.theater}
+                </ListGroup.Item>
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
+                  Description: <hr style={{ backgroundColor: "#00cc00" }} />
+                  {ticket.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
-              <Card>
+              <Card style={{ borderColor: "#00cc00" }}>
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
+                  <ListGroup.Item
+                    style={{ backgroundColor: "black", color: "white" }}
+                  >
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${ticket.price}</strong>
+                        <strong>{ticket.price} Rs /=</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
 
-                  <ListGroup.Item>
+                  <ListGroup.Item
+                    style={{ backgroundColor: "black", color: "white" }}
+                  >
                     <Row>
                       <Col>Status:</Col>
                       <Col>
@@ -120,11 +146,14 @@ const TicketScreen = ({ history, match }) => {
                   </ListGroup.Item>
 
                   {ticket.countInStock > 0 && (
-                    <ListGroup.Item>
+                    <ListGroup.Item
+                      style={{ backgroundColor: "black", color: "white" }}
+                    >
                       <Row>
                         <Col>Qty</Col>
                         <Col>
                           <Form.Control
+                            style={{ backgroundColor: "black", color: "white" }}
                             as="select"
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
@@ -140,8 +169,9 @@ const TicketScreen = ({ history, match }) => {
                     </ListGroup.Item>
                   )}
 
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ backgroundColor: "black" }}>
                     <Button
+                      style={{ backgroundColor: "#00cc00", color: "white" }}
                       onClick={addToCartHandler}
                       className="btn-block"
                       type="button"
@@ -154,20 +184,27 @@ const TicketScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
+
           <Row>
             <Col md={6}>
               <h2>Reviews</h2>
               {ticket.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">
                 {ticket.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
+                  <ListGroup.Item
+                    style={{ backgroundColor: "black", color: "white" }}
+                    key={review._id}
+                  >
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-                <ListGroup.Item>
+                <br />
+                <ListGroup.Item
+                  style={{ backgroundColor: "black", color: "white" }}
+                >
                   <h2>Write a Customer Review</h2>
                   {successTicketReview && (
                     <Message variant="success">
@@ -186,6 +223,7 @@ const TicketScreen = ({ history, match }) => {
                           as="select"
                           value={rating}
                           onChange={(e) => setRating(e.target.value)}
+                          style={{ backgroundColor: "black", color: "white" }}
                         >
                           <option value="">Select...</option>
                           <option value="1">1 - Poor</option>
@@ -204,7 +242,9 @@ const TicketScreen = ({ history, match }) => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
+                      <br />
                       <Button
+                        style={{ backgroundColor: "#00cc00", color: "white" }}
                         disabled={loadingTicketReview}
                         type="submit"
                         variant="primary"

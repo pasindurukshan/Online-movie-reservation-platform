@@ -13,8 +13,8 @@ const PlaceOrderScreen = ({ history }) => {
 
   const cart = useSelector((state) => state.cart);
 
-  if (!cart.shippingAddress.address) {
-    history.push("/shipping");
+  if (!cart.bookingAddress.address) {
+    history.push("/booking");
   } else if (!cart.paymentMethod) {
     history.push("/payment");
   }
@@ -26,11 +26,11 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
+  cart.bookingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
+    Number(cart.bookingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
 
@@ -50,10 +50,10 @@ const PlaceOrderScreen = ({ history }) => {
     dispatch(
       createOrder({
         orderItems: cart.cartItems,
-        shippingAddress: cart.shippingAddress,
+        bookingAddress: cart.bookingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
+        bookingPrice: cart.bookingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
@@ -67,12 +67,11 @@ const PlaceOrderScreen = ({ history }) => {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>Booking</h2>
               <p>
                 <strong>Address:</strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
-                {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.country}
+                {cart.bookingAddress.address}, {cart.bookingAddress.city}{" "}
+                {cart.bookingAddress.postalCode}, {cart.bookingAddress.country}
               </p>
             </ListGroup.Item>
 
@@ -127,8 +126,8 @@ const PlaceOrderScreen = ({ history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>Booking</Col>
+                  <Col>${cart.bookingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

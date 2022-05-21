@@ -20,8 +20,8 @@ const Header = () => {
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <LinkContainer to="/">
-            <Navbar.Brand>ProShop</Navbar.Brand>
+          <LinkContainer style={{ color: "#00cc00" }} to="/">
+            <Navbar.Brand>Ticket Mart</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
