@@ -27,9 +27,7 @@ const TicketCarousel = () => {
           <Link to={`/ticket/${ticket._id}`}>
             <Image src={ticket.image} alt={ticket.name} fluid />
             <Carousel.Caption className="carousel-caption">
-              <h2>
-                {ticket.name} (${ticket.price})
-              </h2>
+              <h2>{ticket.name}</h2>
             </Carousel.Caption>
           </Link>
         </Carousel.Item>

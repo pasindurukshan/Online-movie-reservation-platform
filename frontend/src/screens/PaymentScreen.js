@@ -26,12 +26,19 @@ const PaymentScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
+      <br />
+      <br />
+      <br />
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as="legend">Select Method</Form.Label>
+          <Form.Label style={{ color: "white" }} as="legend">
+            Select Method
+          </Form.Label>
+          <br />
           <Col>
             <Form.Check
+              style={{ color: "white" }}
               type="radio"
               label="PayPal or Credit Card"
               id="PayPal"
@@ -50,8 +57,12 @@ const PaymentScreen = ({ history }) => {
             ></Form.Check> */}
           </Col>
         </Form.Group>
-
-        <Button type="submit" variant="primary">
+        <hr />
+        <Button
+          type="submit"
+          variant="primary"
+          style={{ backgroundColor: "#00cc00", color: "white" }}
+        >
           Continue
         </Button>
       </Form>

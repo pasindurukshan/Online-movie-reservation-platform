@@ -92,9 +92,16 @@ const TicketListScreen = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className="table-sm">
+          <Table
+            style={{ color: "white" }}
+            striped
+            bordered
+            hover
+            responsive
+            className="table-sm"
+          >
             <thead>
-              <tr style={{ color: "white" }}>
+              <tr>
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
@@ -105,10 +112,10 @@ const TicketListScreen = ({ history, match }) => {
             </thead>
             <tbody>
               {tickets.map((ticket) => (
-                <tr style={{ color: "white" }} key={ticket._id}>
+                <tr key={ticket._id}>
                   <td>{ticket._id}</td>
                   <td>{ticket.name}</td>
-                  <td>${ticket.price}</td>
+                  <td>{ticket.price} Rs</td>
                   <td>{ticket.theater}</td>
                   <td>{ticket.date}</td>
                   <td>

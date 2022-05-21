@@ -100,11 +100,6 @@ const TicketScreen = ({ history, match }) => {
                 <ListGroup.Item
                   style={{ backgroundColor: "black", color: "white" }}
                 >
-                  Price: {ticket.price} Rs/=
-                </ListGroup.Item>
-                <ListGroup.Item
-                  style={{ backgroundColor: "black", color: "white" }}
-                >
                   Release Date: {ticket.date}
                 </ListGroup.Item>
                 <ListGroup.Item

@@ -66,29 +66,38 @@ const PlaceOrderScreen = ({ history }) => {
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Booking</h2>
               <p>
-                <strong>Address:</strong>
+                <strong>Address: </strong>
                 {cart.bookingAddress.address}, {cart.bookingAddress.city}{" "}
                 {cart.bookingAddress.postalCode}, {cart.bookingAddress.country}
               </p>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Payment Method</h2>
               <strong>Method: </strong>
               {cart.paymentMethod}
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item
+              style={{ backgroundColor: "black", color: "white" }}
+            >
               <h2>Order Items</h2>
               {cart.cartItems.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
                 <ListGroup variant="flush">
                   {cart.cartItems.map((item, index) => (
-                    <ListGroup.Item key={index}>
+                    <ListGroup.Item
+                      style={{ backgroundColor: "black", color: "white" }}
+                      key={index}
+                    >
                       <Row>
                         <Col md={1}>
                           <Image
@@ -99,10 +108,16 @@ const PlaceOrderScreen = ({ history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/ticket/${item.ticket}`}>{item.name}</Link>
+                          <Link
+                            style={{ color: "white" }}
+                            to={`/ticket/${item.ticket}`}
+                          >
+                            {item.name}
+                          </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price} Rs = {item.qty * item.price}{" "}
+                          Rs/=
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -113,39 +128,54 @@ const PlaceOrderScreen = ({ history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
+          <Card style={{ borderColor: "#00cc00" }}>
             <ListGroup variant="flush">
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <h2>Order Summary</h2>
+                <hr style={{ backgroundColor: "#00cc00" }} />
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>{cart.itemsPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Booking</Col>
-                  <Col>${cart.bookingPrice}</Col>
+                  <Col>{cart.bookingPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>{cart.taxPrice} Rs</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>{cart.totalPrice} Rs/=</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 {error && <Message variant="danger">{error}</Message>}
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
                 <Button
                   type="button"
                   className="btn-block"
