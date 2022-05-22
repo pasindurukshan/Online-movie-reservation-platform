@@ -28,10 +28,10 @@ const BookingScreen = ({ history }) => {
       <h1>Booking</h1>
       <Form style={{ color: "white" }} onSubmit={submitHandler}>
         <Form.Group controlId="address">
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter address"
+            placeholder="Enter Email Address"
             value={address}
             required
             onChange={(e) => setAddress(e.target.value)}
@@ -39,10 +39,10 @@ const BookingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId="city">
-          <Form.Label>City</Form.Label>
+          <Form.Label>Payer</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter city"
+            placeholder="Enter Payer"
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
@@ -50,10 +50,10 @@ const BookingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId="postalCode">
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label>Phone Number1</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter postal code"
+            placeholder="Enter Phone Number1"
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
@@ -61,10 +61,10 @@ const BookingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
+          <Form.Label>Phone Number2</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter country"
+            placeholder="Enter Phone Number2"
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
