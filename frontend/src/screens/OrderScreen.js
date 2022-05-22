@@ -15,6 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../constants/orderConstants";
+import Qrcode from "../components/Qrcode";
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id;
@@ -268,9 +269,12 @@ const OrderScreen = ({ match, history }) => {
               <ListGroup.Item
                 style={{ backgroundColor: "black", color: "white" }}
               >
-                <h2>QR Code</h2>
-                <hr style={{ backgroundColor: "#00cc00" }} />
-                <p>hello</p>
+                <div style={{ textAlign:'center'}}>
+                  <h3>PayHere</h3>
+                  <hr style={{ backgroundColor: "#00cc00" }} />
+                  <Qrcode text={`http://localhost:3000/order/${orderId}`} />
+                </div>
+                 
               </ListGroup.Item>
               
             </ListGroup>
