@@ -261,6 +261,21 @@ const OrderScreen = ({ match, history }) => {
                 )}
             </ListGroup>
           </Card>
+
+          <br/>          
+          <Card style={{ borderColor: "#00cc00" }}>
+            <ListGroup variant="flush">
+              <ListGroup.Item
+                style={{ backgroundColor: "black", color: "white" }}
+              >
+                <h2>QR Code</h2>
+                <hr style={{ backgroundColor: "#00cc00" }} />
+                <p>hello</p>
+              </ListGroup.Item>
+              
+            </ListGroup>
+          </Card>          
+
         </Col>
       </Row>
     </>
