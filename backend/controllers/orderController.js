@@ -1,6 +1,10 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
-
+import mg from 'mailgun-js'
+const mailgun = () => mg({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+})
 // @desc    Create new order
 // @route   POST /api/orders
 // @access  Private
@@ -9,7 +13,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     orderItems,
     bookingAddress,
     paymentMethod,
-    itemsPrice,
+    itemsPrice,   
     taxPrice,
     bookingPrice,
     totalPrice,
@@ -59,6 +63,8 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
+  const {email} = req.user
+  //const {email} = req.body.payer.email_address
 
   if (order) {
     order.isPaid = true;
@@ -71,6 +77,23 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     };
 
     const updatedOrder = await order.save();
+
+    mailgun().messages().send({
+      from: 'John Doe <navarathnewaruna7@gmail.com>',
+      to: `${email}`,
+      subject: `Paid`,
+      html: `<p>La la laaaaaaaaa</p>`
+  },
+  (error, body) => {
+      if(error){
+          console.log('Error in sending email',error);
+          // res.status(500).send({ message: 'Error in sending email'});
+      }else{
+          console.log('Email sent successfully',body);
+          // res.send({ message: 'Email sent successfully'}); 
+      }
+  }
+  );
 
     res.json(updatedOrder);
   } else {
