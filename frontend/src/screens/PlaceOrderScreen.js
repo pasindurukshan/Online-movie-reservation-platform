@@ -18,7 +18,8 @@ const PlaceOrderScreen = ({ history }) => {
   } else if (!cart.paymentMethod) {
     history.push("/payment");
   }
-  //   Calculate prices
+
+  //Calculate prices
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
@@ -26,11 +27,10 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
-  cart.bookingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
+  
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    Number(cart.bookingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
 
@@ -53,7 +53,6 @@ const PlaceOrderScreen = ({ history }) => {
         bookingAddress: cart.bookingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        bookingPrice: cart.bookingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
@@ -70,11 +69,11 @@ const PlaceOrderScreen = ({ history }) => {
               style={{ backgroundColor: "black", color: "white" }}
             >
               <h2>Booking</h2>
-              <p>
-                <strong>Address: </strong>
-                {cart.bookingAddress.address}, {cart.bookingAddress.city}{" "}
-                {cart.bookingAddress.postalCode}, {cart.bookingAddress.country}
-              </p>
+              <strong>Details: </strong>
+                <p>Email : {cart.bookingAddress.address}</p> 
+                <p>Payer : {cart.bookingAddress.city}</p>
+                <p>Phone number 1 : {cart.bookingAddress.postalCode}</p>
+                <p>Phone number 2 : {cart.bookingAddress.country}</p>
             </ListGroup.Item>
 
             <ListGroup.Item
@@ -110,14 +109,13 @@ const PlaceOrderScreen = ({ history }) => {
                         <Col>
                           <Link
                             style={{ color: "white" }}
-                            to={`/ticket/${item.ticket}`}
+                            to={`/ticket/${item.ticket}`} 
                           >
                             {item.name}
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x {item.price} Rs = {item.qty * item.price}{" "}
-                          Rs/=
+                          {item.qty} x Rs.{item.price} = Rs.{item.qty * item.price}{" "}/=
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -127,6 +125,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
+
         <Col md={4}>
           <Card style={{ borderColor: "#00cc00" }}>
             <ListGroup variant="flush">
@@ -141,23 +140,16 @@ const PlaceOrderScreen = ({ history }) => {
               >
                 <Row>
                   <Col>Items</Col>
-                  <Col>{cart.itemsPrice} Rs</Col>
+                  <Col>Rs. {cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
+              
               <ListGroup.Item
                 style={{ backgroundColor: "black", color: "white" }}
               >
                 <Row>
-                  <Col>Booking</Col>
-                  <Col>{cart.bookingPrice} Rs</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item
-                style={{ backgroundColor: "black", color: "white" }}
-              >
-                <Row>
-                  <Col>Tax</Col>
-                  <Col>{cart.taxPrice} Rs</Col>
+                  <Col>Online Transaction Tax</Col>
+                  <Col>Rs. {cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item
@@ -165,7 +157,7 @@ const PlaceOrderScreen = ({ history }) => {
               >
                 <Row>
                   <Col>Total</Col>
-                  <Col>{cart.totalPrice} Rs/=</Col>
+                  <Col>Rs. {cart.totalPrice}/=</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item
