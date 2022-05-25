@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
@@ -20,9 +20,13 @@ import TicketEditScreen from "./screens/TicketEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 
 const App = () => {
+  const [search, setSearch] = useState("")
+  const setSearchWord = (w) => {
+    setSearch(w)
+  }
   return (
     <Router>
-      <Header />
+      <Header search={search} setSearchWord={setSearchWord}/>
       <main className="py-3">
         <Container>
           <Route path="/order/:id" component={OrderScreen} />
@@ -44,14 +48,14 @@ const App = () => {
           />
           <Route path="/admin/ticket/:id/edit" component={TicketEditScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />
-          <Route path="/search/:keyword" component={HomeScreen} exact />
-          <Route path="/page/:pageNumber" component={HomeScreen} exact />
+          <Route path="/search/:keyword" render={(props) => <HomeScreen {...props} search={search} />} exact />
+          <Route path="/page/:pageNumber" render={(props) => <HomeScreen {...props} search={search} />} exact />
           <Route
             path="/search/:keyword/page/:pageNumber"
-            component={HomeScreen}
+            render={(props) => <HomeScreen {...props} search={search} />}
             exact
           />
-          <Route path="/" component={HomeScreen} exact />
+          <Route path="/"  render={(props) => <HomeScreen {...props} search={search} />} exact />
         </Container>
       </main>
       <Footer />
