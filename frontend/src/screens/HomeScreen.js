@@ -11,7 +11,8 @@ import Meta from "../components/Meta";
 import { listTickets } from "../actions/ticketActions";
 import "./main.css";
 
-const HomeScreen = ({ match }) => {
+const HomeScreen = ({ match, search }) => {
+  console.log('search', search)
   const keyword = match.params.keyword;
 
   const pageNumber = match.params.pageNumber || 1;
@@ -44,7 +45,10 @@ const HomeScreen = ({ match }) => {
       ) : (
         <>
           <Row>
-            {tickets.map((ticket) => (
+                {
+                   (!search ? tickets : tickets.filter(t => t.theater.toLowerCase().includes(search.toLowerCase())))
+                   //tickets
+                    .map((ticket) => (
               <Col key={ticket._id} sm={12} md={6} lg={4} xl={3}>
                 <Ticket ticket={ticket} />
               </Col>
