@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios";  //import items
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
@@ -6,6 +6,7 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
 
+//get ticket details
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/tickets/${id}`);
 
