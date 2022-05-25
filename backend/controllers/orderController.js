@@ -81,8 +81,8 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     mailgun().messages().send({
       from: 'John Doe <navarathnewaruna7@gmail.com>',
       to: `${email}`,
-      subject: `Paid`,
-      html: `<p>La la laaaaaaaaa</p>`
+      subject: `Your Payment has been made`,
+      html: `<p>Thank you for choosing Ticket Mart</p>`
   },
   (error, body) => {
       if(error){

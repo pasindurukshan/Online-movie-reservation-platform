@@ -273,7 +273,8 @@ const OrderScreen = ({ match, history }) => {
                 <div style={{ textAlign:'center'}}>
                   <h3>PayHere</h3>
                   <hr style={{ backgroundColor: "#00cc00" }} />
-                  <Qrcode text={`http://localhost:3000/order/${orderId}`} />
+                  {/* <Qrcode text={`http://localhost:3000/order/${orderId}`} /> */}
+                  <Qrcode text={`http://ticketmart.herokuapp.com/order/${orderId}`} />
                 </div>
                  
               </ListGroup.Item>
