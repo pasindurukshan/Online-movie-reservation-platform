@@ -185,7 +185,8 @@ export const updateTicket = (ticket) => async (dispatch, getState) => {
     });
   }
 };
-
+//tickets review function
+//add review for the tickets
 export const createTicketReview =
   (ticketId, review) => async (dispatch, getState) => {
     try {
@@ -223,7 +224,9 @@ export const createTicketReview =
       });
     }
   };
-
+  
+  //top reviewed function
+//list of most  reviewed tickest 
 export const listTopTickets = () => async (dispatch) => {
   try {
     dispatch({ type: TICKET_TOP_REQUEST });
