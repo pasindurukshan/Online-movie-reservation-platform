@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import "../screens/main.css";
 
 const SearchBox = ({ history, search, setSearchWord }) => {
   const [keyword, setKeyword] = useState("");
@@ -42,34 +43,35 @@ const SearchBox = ({ history, search, setSearchWord }) => {
 
     &nbsp; &nbsp; &nbsp;
       {/* Filter Theatre */}
-    <div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662", float: "left" }} >
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={handleFilter} />
-        <label class="form-check-label" for="exampleRadios2">
+    <div className="p-3 mb-10 text-light" style={{ backgroundColor: "dark", justifyContent:"left"}} >
+      <div class="form-check" style={{ backgroundColor: "dark", justifyContent:"left"}}>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="" onChange={handleFilter} />
+        <label class="form-check-label" for="flexRadioDefault1">
           ALL
         </label>
       </div>
 
-      <div class="form-check" >
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Savoy" onChange={handleFilter} />
-        <label class="form-check-label" for="exampleRadios1">
+      <div class="form-check" style={{justifyContent:"left"}}>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Savoy" onChange={handleFilter} />
+        <label class="form-check-label" for="flexRadioDefault2">
           Savoy
         </label>
       </div>
       
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Regal" onChange={handleFilter}/>
-        <label class="form-check-label" for="exampleRadios2">
+      <div class="form-check" style={{justifyContent:"left"}}>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Regal" onChange={handleFilter}/>
+        <label class="form-check-label" for="flexRadioDefault3">
           Regal
         </label>
       </div>
       
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="Liberty" onChange={handleFilter} />
-        <label class="form-check-label" for="exampleRadios3">
+      <div class="form-check" style={{justifyContent:"left"}}>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="Liberty" onChange={handleFilter} />
+        <label class="form-check-label" for="flexRadioDefault4">
           Liberty
         </label>
       </div>
+
     </div>
     </Form>
   );

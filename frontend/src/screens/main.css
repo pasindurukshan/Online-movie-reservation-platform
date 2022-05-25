@@ -12,3 +12,10 @@ body {
 hr {
   background-color: white;
 }
+
+
+input[name="flexRadioDefault"] {
+
+  accent-color: #00cc00;
+
+}
