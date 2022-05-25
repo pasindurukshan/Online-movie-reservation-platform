@@ -224,7 +224,9 @@ export const createTicketReview =
       });
     }
   };
-
+  
+  //top reviewed function
+//list of most  reviewed tickest 
 export const listTopTickets = () => async (dispatch) => {
   try {
     dispatch({ type: TICKET_TOP_REQUEST });
