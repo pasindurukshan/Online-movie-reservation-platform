@@ -185,7 +185,8 @@ export const updateTicket = (ticket) => async (dispatch, getState) => {
     });
   }
 };
-
+//tickets review function
+//add review for the tickets
 export const createTicketReview =
   (ticketId, review) => async (dispatch, getState) => {
     try {
