@@ -16,12 +16,12 @@ const SearchBox = ({ history, search, setSearchWord }) => {
     }
   };
 
-  const handleFilter = (e) =>{
 
-  const searchKey= e.currentTarget.value;
-    setSearchWord(searchKey)
-    
-  }
+  //Filter Theater
+  const handleFilter = (e) =>{
+    const searchKey= e.currentTarget.value;
+      setSearchWord(searchKey)
+    }
 
 
 
@@ -44,7 +44,7 @@ const SearchBox = ({ history, search, setSearchWord }) => {
       </Button>
 
     &nbsp; &nbsp; &nbsp;
-      {/* Filter Theatre */}
+      {/* Filter Theater radio button form */}
     <div className="p-3 mb-10 text-light" style={{ backgroundColor: "dark", justifyContent:"left"}} >
       <div class="form-check" style={{ backgroundColor: "dark", justifyContent:"left"}}>
         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="" onChange={handleFilter} />
