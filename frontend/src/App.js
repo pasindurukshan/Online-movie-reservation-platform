@@ -20,8 +20,8 @@ import TicketEditScreen from "./screens/TicketEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 
 const App = () => {
-  const [search, setSearch] = useState("")
-  const setSearchWord = (w) => {
+  const [search, setSearch] = useState("")      //set an state to filter stuff
+  const setSearchWord = (w) => {                //create setSearchWord fun for future component to include.
     setSearch(w)
   }
   return (
@@ -48,6 +48,8 @@ const App = () => {
           />
           <Route path="/admin/ticket/:id/edit" component={TicketEditScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />
+
+          {/* passes search as props to Home */}
           <Route path="/search/:keyword" render={(props) => <HomeScreen {...props} search={search} />} exact />
           <Route path="/page/:pageNumber" render={(props) => <HomeScreen {...props} search={search} />} exact />
           <Route
